@@ -1,25 +1,36 @@
 var carouselAng = angular.module('carouselAng', []);
 
-carouselAng.controller('cController', function($scope){
+carouselAng.controller('cController', ['$scope', '$interval', function($scope, $interval){
+	$scope.carouselPercentage = 0;
 	$scope.manufacturers = (function(){
 		return json;
 	})();
-});
+
+	function stepPercentage() {
+		$scope.carouselPercentage += 1;
+		if ($scope.carouselPercentage > 100){
+			$scope.carouselPercentage = 0;
+		}
+	}
+
+	var timer = $interval(stepPercentage, 50);
+	
+}]);
 
 var json = [
 		{
-			"Name":"Nintendo",
-			"URL":"assets/gameboy.jpg",
+			"name":"Nintendo",
+			"url":"assets/gameboy.jpg",
 			"consoles":["Gameboy", "Gamecube", "N64"]
 		},
 		{
-			"Name":"Sony",
-			"URL":"assets/psp.jpg",
+			"name":"Sony",
+			"url":"assets/psp.jpg",
 			"consoles":["PSP", "PS2", "Vita"]
 		},
 		{
-			"Name":"Microsoft",
-			"URL":"assets/xbox.jpg",
+			"name":"Microsoft",
+			"url":"assets/xbox.jpg",
 			"consoles":["PC", "Xbox 360", "Xbox One"]
 		}
 	];
