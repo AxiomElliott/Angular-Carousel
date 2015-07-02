@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="carouselAng">
     <head>
         <title>Carousel</title>
         <meta charset="utf-8">
@@ -11,7 +11,22 @@
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
         <style type="text/css"></style>
     </head>
-    <body ng-app>
+    <body>
+        <div ng-controller="cController">
+            <div>
+                <ul>
+                    <li ng-repeat="n in navigation">
+                        {{n.Navigation}}
+                    </li>
+                </ul>
+            </div>
+            <ul>
+                <li ng-repeat="n in navigation">
+                <div><img src="test" /></div>
+                <div>Description Text</div>
+                </li>
+            </ul>
+        </div>
     </body>
     <script type="text/javascript"></script>
 </html>
