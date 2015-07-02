@@ -1,27 +1,25 @@
 var carouselAng = angular.module('carouselAng', []);
 
 carouselAng.controller('cController', function($scope){
-	$scope.navigation = (function(){
-		return json.NavArray;
+	$scope.manufacturers = (function(){
+		return json;
 	})();
 });
 
-var json = {
-	"NavArray":[
+var json = [
 		{
-			"Navigation":"Nintendo", 
-			"URL":"/nintendo/",
-			"SubNavigation":[{"Name":"Gameboy", "URL":""},{"Name":"Gamecube", "URL":""},{"Name":"N64", "URL":""}]
+			"Name":"Nintendo",
+			"URL":"assets/gameboy.jpg",
+			"consoles":["Gameboy", "Gamecube", "N64"]
 		},
 		{
-			"Navigation":"Sony", 
-			"URL":"/sony/",
-			"SubNavigation":[{"Name":"PSP", "URL":""},{"Name":"PS2", "URL":""},{"Name":"Vita", "URL":""}]
+			"Name":"Sony",
+			"URL":"assets/psp.jpg",
+			"consoles":["PSP", "PS2", "Vita"]
 		},
 		{
-			"Navigation":"Microsoft", 
-			"URL":"/microsoft/",
-			"SubNavigation":[{"Name":"PC", "URL":""},{"Name":"Xbox 360", "URL":""},{"Name":"Xbox One", "URL":""}]
+			"Name":"Microsoft",
+			"URL":"assets/xbox.jpg",
+			"consoles":["PC", "Xbox 360", "Xbox One"]
 		}
-	]
-};
+	];

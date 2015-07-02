@@ -8,24 +8,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
         <script src="carousel.js"></script>
-        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
         <style type="text/css"></style>
     </head>
     <body>
         <div ng-controller="cController">
+            <!-- loading bar div -->
+            <div></div>
+            <!-- top navigation div -->
             <div>
-                <ul>
-                    <li ng-repeat="n in navigation">
-                        {{n.Navigation}}
-                    </li>
-                </ul>
+                <div ng-repeat="n in manufacturers">
+                    {{n.Name}}
+                </div>
             </div>
-            <ul>
-                <li ng-repeat="n in navigation">
-                <div><img src="test" /></div>
-                <div>Description Text</div>
-                </li>
-            </ul>
+            <!-- bottom navigation div -->
+            <div>
+                <div ng-repeat="n in manufacturers">
+                    <!-- left side picture -->
+                    <div><img src="{{n.URL}}" /></div>
+                    <!-- right side navigation description -->
+                    <div>
+                        <div ng-repeat="console in n.consoles">
+                            {{console}}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
     <script type="text/javascript"></script>
