@@ -2,18 +2,23 @@ var carouselAng = angular.module('carouselAng', []);
 
 carouselAng.controller('cController', ['$scope', '$interval', function($scope, $interval){
 	$scope.carouselPercentage = 0;
+
 	$scope.manufacturers = (function(){
 		return json;
 	})();
 
+	$scope.loadingBarWidth = function () {
+		return { width:($scope.carouselPercentage / 20) + '%' };
+	};
+
 	function stepPercentage() {
 		$scope.carouselPercentage += 1;
-		if ($scope.carouselPercentage > 100){
+		if ($scope.carouselPercentage > 2000){
 			$scope.carouselPercentage = 0;
 		}
 	}
 
-	var timer = $interval(stepPercentage, 50);
+	var timer = $interval(stepPercentage, 10);
 	
 }]);
 

@@ -14,7 +14,8 @@
     <body>
         <div ng-controller="cController">
             <!-- loading bar div -->
-            <div value="{{carouselPercentage}}"></div>
+            <div ng-style="loadingBarWidth()" class="loadingbar">
+            </div>
             <!-- top navigation div -->
             <div>
                 <div ng-repeat="n in manufacturers">
@@ -25,7 +26,7 @@
             <div>
                 <div ng-repeat="n in manufacturers">
                     <!-- left side picture -->
-                    <div><img src="{{n.url}}" /></div>
+                    <div><img ng-src="{{n.url}}" /></div>
                     <!-- right side navigation description -->
                     <div>
                         <div ng-repeat="console in n.consoles">

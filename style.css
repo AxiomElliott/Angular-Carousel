@@ -1,0 +1,8 @@
+* {
+	width:100%;
+}
+
+.loadingbar {
+	height:10px;
+	background-color: black;
+}
