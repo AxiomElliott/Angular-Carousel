@@ -6,29 +6,32 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="Demo project">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Cabin" rel="stylesheet" type="text/css">
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
         <script src="carousel.js"></script>
         <link rel="stylesheet" href="style.css">
         <style type="text/css"></style>
     </head>
     <body>
-        <div ng-controller="cController">
+        <div ng-controller="cController" class="back">
             <!-- loading bar div -->
             <div ng-style="loadingBarWidth()" class="loadingbar">
             </div>
             <!-- top navigation div -->
-            <div>
-                <div ng-repeat="n in manufacturers">
+            <div class="navigationtable">
+                <div ng-repeat="n in manufacturers track by $index" ng-class="getNavSelected($index)" ng-click="setSelectedIndex($index)">
                     {{n.name}}
                 </div>
             </div>
             <!-- bottom navigation div -->
-            <div>
-                <div ng-repeat="n in manufacturers">
+            <div class="carousel">
+                <div ng-repeat="n in manufacturers" ng-show="checkShow($index)" class="carouselitem">
                     <!-- left side picture -->
-                    <div><img ng-src="{{n.url}}" /></div>
+                    <div class="carouselimage" ng-style="{'background-image':'url({{n.url}})'}"></div>
                     <!-- right side navigation description -->
-                    <div>
+                    <div class="carouseltext">
+                        <h2>Console examples:</h2>
                         <div ng-repeat="console in n.consoles">
                             {{console}}
                         </div>
