@@ -26,7 +26,7 @@
             </div>
             <!-- bottom navigation div -->
             <div class="carousel">
-                <div ng-repeat="n in manufacturers" ng-show="checkShow($index)" class="carouselitem">
+                <div ng-repeat="n in manufacturers" ng-class="checkAnimation($index)" class="carouselitem animated">
                     <!-- left side picture -->
                     <div class="carouselimage" ng-style="{'background-image':'url({{n.url}})'}"></div>
                     <!-- right side navigation description -->
