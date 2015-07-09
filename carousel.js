@@ -35,7 +35,7 @@ carouselAng.controller('cController', ['$scope', '$interval', function($scope, $
 		$scope.selectedIndex  = $scope.manufacturers.length === ($scope.selectedIndex + 1)? 0 : $scope.selectedIndex + 1;
 	}
 
-	var timer = $interval(stepPercentage, 1);
+	var timer = $interval(stepPercentage, 20);
 	
 }]);
 
