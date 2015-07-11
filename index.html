@@ -15,12 +15,12 @@
     </head>
     <body>
         <div ng-controller="cController" class="back">
-            <!-- loading bar div -->
-            <div ng-style="loadingBarWidth()" class="loadingbar">
-            </div>
             <!-- top navigation div -->
-            <div class="navigationtable">
+            <div class="navigationdiv">
                 <div ng-repeat="n in manufacturers track by $index" ng-class="getNavSelected($index)" ng-click="setSelectedIndex($index)">
+                    <div class="loadingbarbackground" ng-show="automatic === true">
+                        <div ng-style="loadingBarWidth($index)" class="loadingbar"></div>
+                    </div>
                     {{n.name}}
                 </div>
             </div>

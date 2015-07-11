@@ -1,6 +1,7 @@
 var carouselAng = angular.module('carouselAng', []);
 
 carouselAng.controller('cController', ['$scope', '$interval', function($scope, $interval){
+	$scope.automatic = true;
 	$scope.carouselPercentage = 0;
 	$scope.selectedIndex = 0;
 	$scope.manufacturers = (function(){
@@ -11,12 +12,15 @@ carouselAng.controller('cController', ['$scope', '$interval', function($scope, $
 		return ($scope.selectedIndex === index) ? "slideInRight" : "slideOutLeft";
 	};
 
-	$scope.loadingBarWidth = function () {
-		return { width:($scope.carouselPercentage / 10) + '%' };
+	$scope.loadingBarWidth = function(index) {
+		if ($scope.selectedIndex === index) {
+			return { width:($scope.carouselPercentage / 10) + '%' };
+		}
 	};
 	$scope.setSelectedIndex = function(index) {
 		$scope.selectedIndex = index;
 		$scope.carouselPercentage = 0;
+		$scope.automatic = false;
 	};
 
 	$scope.getNavSelected = function(index) {
@@ -24,7 +28,9 @@ carouselAng.controller('cController', ['$scope', '$interval', function($scope, $
 	};
 
 	function stepPercentage() {
-		$scope.carouselPercentage += 1;
+		if ($scope.automatic) {
+			$scope.carouselPercentage += 1;
+		}
 		if ($scope.carouselPercentage > 1000){
 			$scope.carouselPercentage = 0;
 			moveCarousel();
@@ -35,7 +41,7 @@ carouselAng.controller('cController', ['$scope', '$interval', function($scope, $
 		$scope.selectedIndex  = $scope.manufacturers.length === ($scope.selectedIndex + 1)? 0 : $scope.selectedIndex + 1;
 	}
 
-	var timer = $interval(stepPercentage, 20);
+	$interval(stepPercentage, 5);
 	
 }]);
 

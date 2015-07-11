@@ -1,18 +1,21 @@
 @import 'animate.css';
 
-.back {
-		background-color: #9B3F00;
+.loadingbarbackground {
+		background-color: #FF6700;
+		height:5px;
+		width:100%;
 }
 
 .loadingbar {
 	height:5px;
-	background-color: #FF6700;
+	background-color: #9B3F00;
 }
 
-.navigationtable {
+.navigationdiv {
 	display:table;
 	table-layout: fixed;
 	width:100%;
+	height:43px;
 }
 
 .navigationitem, .navigationitemselected {
