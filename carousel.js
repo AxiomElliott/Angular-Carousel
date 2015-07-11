@@ -3,6 +3,8 @@ var carouselAng = angular.module('carouselAng', []);
 carouselAng.controller('cController', ['$scope', '$interval', function($scope, $interval){
 	$scope.automatic = true;
 	$scope.carouselPercentage = 0;
+	var speed = 10000;
+	$scope.carouselTime = new Date().getTime() + speed;
 	$scope.selectedIndex = 0;
 	$scope.manufacturers = (function(){
 		return json;
@@ -14,7 +16,7 @@ carouselAng.controller('cController', ['$scope', '$interval', function($scope, $
 
 	$scope.loadingBarWidth = function(index) {
 		if ($scope.selectedIndex === index) {
-			return { width:($scope.carouselPercentage / 10) + '%' };
+			return { width:($scope.carouselPercentage) + '%' };
 		}
 	};
 	$scope.setSelectedIndex = function(index) {
@@ -29,10 +31,11 @@ carouselAng.controller('cController', ['$scope', '$interval', function($scope, $
 
 	function stepPercentage() {
 		if ($scope.automatic) {
-			$scope.carouselPercentage += 1;
+			$scope.carouselPercentage = (speed - ($scope.carouselTime - new Date().getTime())) / (speed / 100);
 		}
-		if ($scope.carouselPercentage > 1000){
+		if ($scope.carouselPercentage > 100){
 			$scope.carouselPercentage = 0;
+			$scope.carouselTime = new Date().getTime() + speed;
 			moveCarousel();
 		}
 	}
